@@ -1,16 +1,6 @@
-/* Isabella Man
- * CSE 15
- * lab5
- * 12/4/19
+/*
  * Takes an array of strings of type char** and sorts each string alphabetically
  */
-
-//-----------------------------------------------------------------------------
-// Sort.c
-//
-// compile: gcc -std=c99 -o Sort Sort.c
-//
-//-----------------------------------------------------------------------------
 
 #include<stdio.h>
 #include<stdlib.h>
@@ -20,7 +10,7 @@
 #include<string.h>
 
 #define MAX_STRING_LENGTH 100
-// function prototype 
+
 void extract_chars(char* a, char* s);
 
 void printArray(char** A, int n){
@@ -66,9 +56,9 @@ int main(int argc, char** argv){
    FILE *in;
    FILE *out;
 
-   char** listOfWords;		//an array of strings
+   char** listOfWords;  //an array of strings
    char* a;	
-   char* line;			//string holding input
+   char* line;          //string holding input
    int numWords;
 
    if ((in = fopen(argv[1], "r")) == NULL) {
@@ -102,10 +92,8 @@ int main(int argc, char** argv){
       outer = outer + 1;
    }
 
-   //printArray(listOfWords, numWords);
    QuickSort(listOfWords, 0, numWords-1);
-   //printArray(listOfWords, numWords);
-
+   
    if ((out = fopen(argv[2], "w")) == NULL) {
       printf("Unable to write to file %s\n", argv[1]);
       exit(1);
@@ -114,8 +102,6 @@ int main(int argc, char** argv){
          fprintf(out, "%s\n", listOfWords[i]);
    }
 
-
-   //free heap memory   
    for (int i = 0; i <= numWords; i++) {
       free(listOfWords[i]);
       listOfWords[i] = NULL;
